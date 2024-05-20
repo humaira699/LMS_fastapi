@@ -1,0 +1,50 @@
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">LMS</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/users/user-management">User Management</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/courses/course-management">Course Management</a>
+                    </li>
+                    <li class="nav-item">
+                            <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                    <!-- Add more navigation links as needed -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+    {% if error_message %}
+        <div class="alert alert-danger" role="alert">
+            {{ error_message }}
+        </div>
+    {% endif %}
+    {% if display_table %}
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Update User</h1>
+        <form method="post" action="/users/update/{{ user._id }}">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Enter username" value="{{ user.username }}">
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+    </div>
+    {% endif %}
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
